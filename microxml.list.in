@@ -1,0 +1,90 @@
+#
+# EPM software list file for microxml, a micro XML library.
+#
+# Copyright 2003-2009 by Michael Sweet.
+# Copyright 2011-2012 by Luka Perkov.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Library General Public
+# License as published by the Free Software Foundation; either
+# version 2, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+# Directories...
+$prefix=@prefix@
+$exec_prefix=@exec_prefix@
+$bindir=@bindir@
+$datarootdir=@datarootdir@
+$docdir=@docdir@
+$includedir=@includedir@
+$libdir=@libdir@
+$mandir=@mandir@
+$srcdir=@srcdir@
+
+$PICFLAG=@PICFLAG@
+
+# Product information
+%product microxml
+%copyright 2011-2012 by Luka Perkov
+%vendor Luka Perkov
+%license ${srcdir}/COPYING
+%readme ${srcdir}/README
+%version @VERSION@
+
+%description <<EOF
+microxml is a micro XML parsing library that you can use to read XML and
+XML-like data files in your application without requiring large non-standard
+libraries. microxml provides the following functionality:
+
+		- Reading of UTF-8 and UTF-16 and writing of UTF-8 encoded XML files and
+			strings.
+		- Data is stored in a linked-list tree structure, preserving the XML data
+			hierarchy.
+		- Supports arbitrary element names, attributes, and attribute values with
+			no preset limits, just available memory.
+		- Supports text data in "leaf" nodes.
+		- Functions for creating and managing trees of data.
+		- "find" and "walk" functions for easily locating and navigating trees of
+			data.
+
+microxml doesn't do validation or other types of processing on the data based
+upon schema files or other sources of definition information, nor does it
+support character entities other than those required by the XML specification.
+EOF
+
+# Header files
+f 0444 root sys ${includedir}/microxml.h microxml.h
+
+# Libraries
+%if $PICFLAG
+%system hpux
+f 0555 root sys ${libdir}/libmicroxml.sl.1 libmicroxml.sl.1
+l 0555 root sys ${libdir}/libmicroxml.sl libmicroxml.sl.1
+
+%system darwin
+f 0555 root sys ${libdir}/libmicroxml.1.dylib libmicroxml.1.dylib
+l 0555 root sys ${libdir}/libmicroxml.dylib libmicroxml.1.dylib
+
+%system freebsd irix linux netbsd openbsd solaris tru64
+f 0555 root sys ${libdir}/libmicroxml.so.1.0 libmicroxml.so.1.0
+l 0555 root sys ${libdir}/libmicroxml.so.1 libmicroxml.so.1.0
+l 0555 root sys ${libdir}/libmicroxml.so libmicroxml.so.1.0
+
+%system all
+%endif
+
+f 0444 root sys ${libdir}/libmicroxml.a libmicroxml.a
+
+# pkg-config info
+f 0444 root sys $(libdir)/pkgconfig/microxml.pc microxml.pc
+
+# Documentation
+f 0444 root sys ${docdir}/README $srcdir/README
+f 0444 root sys ${docdir}/COPYING $srcdir/COPYING
+f 0444 root sys ${docdir}/CHANGES $srcdir/CHANGES
+
