@@ -155,7 +155,7 @@ install-libmicroxml.so.1.0:
 	$(RM) $(BUILDROOT)$(libdir)/libmicroxml.so
 	$(LN) libmicroxml.so.1.0 $(BUILDROOT)$(libdir)/libmicroxml.so
 	$(RM) $(BUILDROOT)$(libdir)/libmicroxml.so.1
-	$(LN) libmicroxml.so.1.o $(BUILDROOT)$(libdir)/libmicroxml.so.1
+	$(LN) libmicroxml.so.1.0 $(BUILDROOT)$(libdir)/libmicroxml.so.1
 
 install-libmicroxml.sl.1:
 	echo Installing libmicroxml.sl to $(BUILDROOT)$(libdir)...
