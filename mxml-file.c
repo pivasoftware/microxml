@@ -2790,13 +2790,11 @@ mxml_write_node(mxml_node_t     *node,	/* I - Node to write */
 
 	    col = 0;
 	  }
-	  else
-	  {
-	    if ((*putc_cb)(' ', p) < 0)
-	      return (-1);
 
-	    col ++;
-	  }
+	  /* https://support.easycwmp.org/view.php?id=141 */
+	  if ((*putc_cb)(' ', p) < 0)
+	    return (-1);
+	  col ++;
 
 	  if (mxml_write_name(attr->name, p, putc_cb) < 0)
 	    return (-1);
