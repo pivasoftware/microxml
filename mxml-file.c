@@ -1659,7 +1659,7 @@ mxml_load_data(
 	  */
 
 	  mxml_error("<%s> cannot be a second root node after <%s>", 
-	             buffer, first->value.element.name);
+	             buffer, first->value.element.name ? first->value.element.name : "null");
           goto error; 		     
 	}
 
@@ -1727,7 +1727,7 @@ mxml_load_data(
 	  */
 
 	  mxml_error("<%s> cannot be a second root node after <%s>", 
-	             buffer, first->value.element.name);
+	             buffer, first->value.element.name ? first->value.element.name : "null");
           goto error; 		     
 	}
 
@@ -1794,7 +1794,7 @@ mxml_load_data(
 	  */
 
 	  mxml_error("<%s> cannot be a second root node after <%s>", 
-	             buffer, first->value.element.name);
+	             buffer, first->value.element.name ? first->value.element.name : "null");
           goto error; 		     
 	}
 
@@ -1880,7 +1880,7 @@ mxml_load_data(
 	  */
 
 	  mxml_error("<%s> cannot be a second root node after <%s>", 
-	             buffer, first->value.element.name);
+	             buffer, first->value.element.name ? first->value.element.name : "null");
           goto error; 		     
 	}
 
@@ -1972,7 +1972,7 @@ mxml_load_data(
 	  */
 
 	  mxml_error("<%s> cannot be a second root node after <%s>", 
-	             buffer, first->value.element.name);
+	             buffer, first->value.element.name ? first->value.element.name : "null");
           goto error; 		     
 	}
 
